@@ -43,7 +43,7 @@ budgetUpdate.addEventListener('click', () => {
     if (budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))) {
         alert("Please input a number");
     } else {
-        saveLocalHistory(["Update Budget: ", budgetInp]);
+        saveLocalHistory(["Update Budget:", budgetInp]);
         saveBudget(budgetInp);
         update();
         budgetInput.value = "";
@@ -66,7 +66,7 @@ addExpense.addEventListener('click', () => {
     if (expenseName.value.trim() === "" || Number.isNaN(Number(expenseC)) || cost.trim() === "") {
         alert("Please input all the fields, or input a correct number");
     } else {
-        saveLocalHistory([expenseName.value, expenseC]);
+        saveLocalHistory([expenseName.value + ":", expenseC]);
         update();
         expenseName.value = "";
         expenseCost.value = "";

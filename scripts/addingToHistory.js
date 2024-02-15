@@ -20,4 +20,22 @@ const addHistory = (name, budget) => {
     historyDiv.append(hr2);
 }
 
+const addManageExpense = (expense, cost) => {
+    let div = document.createElement("div");
+    div.className = "between";
+
+    let h4 = document.createElement("h4");
+    h4.textContent = expense;
+
+    let h4Two = document.createElement("h4");
+    h4Two.className = "red";
+    h4Two.textContent =  cost;
+
+    let button = document.createElement("button");
+    button.className = "btn btn-danger w100";
+    button.textContent = "remove expense";
+
+
+}
+
 export {addHistory}
