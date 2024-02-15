@@ -13,8 +13,14 @@ let budget = document.getElementById("budget");
 let historyDiv = document.getElementById("historyDiv");
 
 const update = () => {
+    historyDiv.innerHTML = "";
     let arr = getBudget();
     arr.length === 0 ? budget.textContent = "$" + "0.00" : budget.textContent = "$" + arr[0];
+
+    let histArr = getLocalHistory();
+    histArr.length === 0 ? historyDiv.textContent = "No History." : histArr.map(item => {
+        addHistory(item[0], item[1]);
+    });
 }
 
 update();
@@ -33,7 +39,7 @@ budgetUpdate.addEventListener('click', () => {
     if(budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))){
         alert("Please input a number");
     } else {
-        addHistory("Update Budget:", budgetInp);
+        saveLocalHistory(["Update Budget: ", budgetInp]);
         saveBudget(budgetInp);
         update();
         budgetInput.value = "";
