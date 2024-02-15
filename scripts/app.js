@@ -1,6 +1,6 @@
 import { addHistory, addManageExpense } from "./addingToHistory.js";
 import { saveBudget, getBudget, saveLocalHistory, getLocalHistory } from "./localStorage.js";
-import { addToBudget, subtractFromBudget } from "./changeBudget.js";
+import { subtractFromBudget } from "./changeBudget.js";
 
 let budgetInput = document.getElementById("budgetInput");
 let budgetUpdate = document.getElementById("budgetUpdate");
@@ -29,13 +29,13 @@ const update = () => {
     }
 
     let expArr = [];
-    for(let i = 0; i < histArr.length; i++){
-        if(histArr[i][0] !== "Update Budget:"){
+    for (let i = 0; i < histArr.length; i++) {
+        if (histArr[i][0] !== "Update Budget:") {
             expArr.push(histArr[i]);
         }
     }
 
-    if(expArr.length === 0){
+    if (expArr.length === 0) {
         expenseDiv.textContent = "No Expenses";
     } else {
         expArr.map(exp => addManageExpense(exp[0], exp[1]));
@@ -78,10 +78,14 @@ addExpense.addEventListener('click', () => {
         }
     }
     let expenseC = arr.join("");
+    let curr = getBudget();
     if (expenseName.value.trim() === "" || Number.isNaN(Number(expenseC)) || cost.trim() === "") {
         alert("Please input all the fields, or input a correct number");
+    } else if (Number(expenseC) > Number(curr[0])) {
+        alert("Budget Cost is too high! Enter a lower number");
     } else {
         saveLocalHistory([expenseName.value + ":", expenseC]);
+        subtractFromBudget(expenseC);
         update();
         expenseName.value = "";
         expenseCost.value = "";

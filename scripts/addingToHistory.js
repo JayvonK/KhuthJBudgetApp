@@ -1,5 +1,6 @@
 import { historyDiv, expenseDiv, update } from "./app.js";
 import { removeLocalHistory } from "./localStorage.js";
+import { addToBudget } from "./changeBudget.js";
 
 const addHistory = (name, budget) => {
 
@@ -37,6 +38,7 @@ const addManageExpense = (expense, cost) => {
     button.textContent = "remove expense";
 
     button.addEventListener('click', () => {
+        addToBudget(cost);
         removeLocalHistory([expense, cost]);
         update();
     })
