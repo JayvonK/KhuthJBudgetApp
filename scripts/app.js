@@ -1,5 +1,6 @@
 import { addHistory, addManageExpense } from "./addingToHistory.js";
 import { saveBudget, getBudget, saveLocalHistory, getLocalHistory } from "./localStorage.js";
+import { addToBudget, subtractFromBudget } from "./changeBudget.js";
 
 let budgetInput = document.getElementById("budgetInput");
 let budgetUpdate = document.getElementById("budgetUpdate");
@@ -39,8 +40,6 @@ const update = () => {
     } else {
         expArr.map(exp => addManageExpense(exp[0], exp[1]));
     }
-
-
 }
 
 update();
