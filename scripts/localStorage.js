@@ -32,12 +32,12 @@ const removeLocalHistory = (array) => {
     let arr = getLocalHistory();
     let index = 0;
     arr.map(el => {
-        count++;
+        index++;
         if(el[0] === array[0] && el[1] === array[1]){
-            console.log(count);
+            console.log(index);
         }
     })
 }
 
 
-export {getBudget, saveBudget, getLocalHistory, saveLocalHistory}
+export {getBudget, saveBudget, getLocalHistory, saveLocalHistory, removeLocalHistory}

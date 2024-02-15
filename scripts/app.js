@@ -73,4 +73,4 @@ addExpense.addEventListener('click', () => {
     }
 })
 
-export { historyDiv }
+export { historyDiv, expenseDiv }
