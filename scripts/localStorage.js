@@ -28,7 +28,16 @@ const saveLocalHistory = (array) => {
     localStorage.setItem("history", JSON.stringify(arr));
 }
 
-
+const removeLocalHistory = (array) => {
+    let arr = getLocalHistory();
+    let index = 0;
+    arr.map(el => {
+        count++;
+        if(el[0] === array[0] && el[1] === array[1]){
+            console.log(count);
+        }
+    })
+}
 
 
 export {getBudget, saveBudget, getLocalHistory, saveLocalHistory}
