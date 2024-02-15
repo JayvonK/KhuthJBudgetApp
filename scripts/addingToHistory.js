@@ -8,10 +8,11 @@ const addHistory = (name, budget) => {
     div.className = "between";
 
     let h4 = document.createElement("h4");
+    h4.className = "overX"
     h4.textContent = name;
 
     let h4Two = document.createElement("h4");
-    h4Two.className = "";
+    h4Two.className = "overX";
     h4Two.textContent =  budget;
 
     let hr2 = document.createElement("hr");

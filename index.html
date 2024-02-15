@@ -17,11 +17,11 @@
     </div>
 
     <div class="container-fluid containerPad">
-        <hr>
+        <div class="budgetDiv">
+           <hr>
         <h1 id="budget" class="darkGreen text-center budget overX">$0.00</h1>
-        <hr>
-
-
+        <hr> 
+        </div>
         <!-- Budget trigger modal -->
         <button type="button" class="btn btn-success w100 success" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
@@ -64,13 +64,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div id="expenseDiv" class="modal-body expensesPad">
-                        <div class="expense">
-                            <div class="between">
-                                <h4>Netflix: </h4>
-                                <h4 class="red">-19</h4>
-                            </div>
-                            <button class="btn btn-danger w100">remove expense</button>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
