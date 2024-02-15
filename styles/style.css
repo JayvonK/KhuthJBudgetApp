@@ -1,0 +1,96 @@
+.navBg {
+    background-color: #12372a;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.bodyBg {
+    background-color: #fbfada;
+}
+
+.white {
+    color: #fbfada;
+}
+
+.red {
+    color: red;
+}
+
+.overX {
+    overflow-x: auto;
+}
+
+.success {
+    margin-bottom: 1rem;
+}
+
+.text-end {
+    text-align: end;
+    width: 100%;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.expensesPad {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.end {
+    display: flex;
+    justify-content: end;
+}
+
+.expense {
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.containerPad {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.darkGreen {
+    color: #12372a;
+}
+
+.lightGreen {
+    color: #436850;
+}
+
+.lighterGreen {
+    color: #adbc9f;
+}
+
+.budget {
+    padding: 20px;
+    font-size: 40px;
+}
+
+hr {
+    opacity: 0.75;
+    border-color: #436850;
+    border: 1.5px solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.green {
+    color: green;
+}
+
+/* .historyTxt {
+    padding-top: 10px;
+    padding-bottom: 10px;
+} */
