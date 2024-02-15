@@ -40,7 +40,6 @@ const update = () => {
 
     let expArr = [];
     for (let i = 0; i < histArr.length; i++) {
-        console.log(i)
             if (histArr[i][2] === true) {
                 expArr.push(histArr[i]);
             }
@@ -59,12 +58,10 @@ budgetUpdate.addEventListener('click', () => {
     let arr = [];
     let budg = budgetInput.value;
     for (let i = 0; i < budg.length; i++) {
-        console.log(budg[i])
         if (budg[i] !== "$") {
             arr.push(budg[i]);
         }
     }
-    console.log(arr);
     let budgetInp = arr.join("");
     if (budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))) {
         alert("Please input a number");

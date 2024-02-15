@@ -38,8 +38,6 @@ const changeLocalHistory = (array) => {
             index = count;
         }
     })
-
-    console.log("work");
     arr[index - 1][2] = false;
     localStorage.setItem("history", JSON.stringify(arr));
 }
