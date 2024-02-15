@@ -28,7 +28,7 @@ const saveLocalHistory = (array) => {
     localStorage.setItem("history", JSON.stringify(arr));
 }
 
-const removeLocalHistory = (array) => {
+const changeLocalHistory = (array) => {
     let arr = getLocalHistory();
     let count = 0;
     let index = 0;
@@ -40,9 +40,9 @@ const removeLocalHistory = (array) => {
     })
 
     console.log("work");
-    arr.splice(index - 1, 1);
+    arr[index - 1][2] = false;
     localStorage.setItem("history", JSON.stringify(arr));
 }
 
 
-export {getBudget, saveBudget, getLocalHistory, saveLocalHistory, removeLocalHistory}
+export {getBudget, saveBudget, getLocalHistory, saveLocalHistory, changeLocalHistory}

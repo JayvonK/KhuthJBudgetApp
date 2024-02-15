@@ -75,6 +75,11 @@
     color: #adbc9f;
 }
 
+.overY {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .budget {
     padding: 20px;
     font-size: 40px;
@@ -102,7 +107,6 @@ h4 {
     color: green;
 }
 
-/* .historyTxt {
-    padding-top: 10px;
-    padding-bottom: 10px;
-} */
+.history {
+    max-height: 40dvh;
+}

@@ -29,7 +29,7 @@ const update = () => {
         historyDiv.textContent = "No History.";
     } else {
         for (let i = histArr.length - 1; i >= 0; i--) {
-            if (histArr[i][0] === "Update Budget:") {
+            if (histArr[i][0] === "Update Budget:" || histArr[i][0].split(" ")[0] === "Removed") {
                 addHistory(histArr[i][0], histArr[i][1]);
             } else {
                 addHistoryE(histArr[i][0], histArr[i][1]);
@@ -41,15 +41,7 @@ const update = () => {
     let expArr = [];
     for (let i = 0; i < histArr.length; i++) {
         console.log(i)
-            if (histArr[i][0] !== "Update Budget:" && histArr[i][0].split(" ")[0] !== "Removed") {
-                // for (let j = 0; j < histArr.length; j++) {
-                //     if (histArr[j][0].split(" ")[0] === "Removed") {
-                //         if (histArr[j][0].split(" ")[1] === histArr[i][0].split(" ")[1]) {
-                //             expArr.push(histArr[i]);
-                //             histArr.splice(j, 1);
-                //         }
-                //     } 
-                // }
+            if (histArr[i][2] === true) {
                 expArr.push(histArr[i]);
             }
     }
@@ -77,7 +69,7 @@ budgetUpdate.addEventListener('click', () => {
     if (budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))) {
         alert("Please input a number");
     } else {
-        saveLocalHistory(["Update Budget:", budgetInp]);
+        saveLocalHistory(["Update Budget:", budgetInp, false]);
         saveBudget(budgetInp);
         update();
         budgetInput.value = "";
@@ -103,7 +95,7 @@ addExpense.addEventListener('click', () => {
     } else if (Number(expenseC) > Number(curr[0])) {
         alert("Budget Cost is too high! Enter a lower number");
     } else {
-        saveLocalHistory([expenseName.value + ":", expenseC]);
+        saveLocalHistory([expenseName.value + ":", expenseC, true]);
         subtractFromBudget(expenseC);
         update();
         expenseName.value = "";
