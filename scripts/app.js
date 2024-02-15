@@ -18,9 +18,13 @@ const update = () => {
     arr.length === 0 ? budget.textContent = "$" + "0.00" : budget.textContent = "$" + arr[0];
 
     let histArr = getLocalHistory();
-    histArr.length === 0 ? historyDiv.textContent = "No History." : histArr.map(item => {
-        addHistory(item[0], item[1]);
-    });
+    if (histArr.length === 0) {
+        historyDiv.textContent = "No History.";
+    } else {
+        for (let i = histArr.length - 1; i >= 0; i--) {
+            addHistory(histArr[i][0], histArr[i][1]);
+        }
+    }
 }
 
 update();
@@ -28,15 +32,15 @@ update();
 budgetUpdate.addEventListener('click', () => {
     let arr = [];
     let budg = budgetInput.value;
-    for(let i = 0; i < budg.length; i++){
+    for (let i = 0; i < budg.length; i++) {
         console.log(budg[i])
-        if(budg[i] !== "$"){
+        if (budg[i] !== "$") {
             arr.push(budg[i]);
         }
     }
     console.log(arr);
     let budgetInp = arr.join("");
-    if(budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))){
+    if (budgetInp.trim() === "" || Number.isNaN(Number(budgetInp))) {
         alert("Please input a number");
     } else {
         saveLocalHistory(["Update Budget: ", budgetInp]);
@@ -53,13 +57,13 @@ budgetCancel.addEventListener('click', () => {
 addExpense.addEventListener('click', () => {
     let arr = [];
     let cost = expenseCost.value;
-    for(let i = 0; cost.length; i++){
-        if(cost[i] !== "$"){
+    for (let i = 0; i < cost.length; i++) {
+        if (cost[i] !== "$") {
             arr.push(cost[i]);
         }
     }
-    let expenseC = arr.join("")
-    if(expenseName.value.trim() === "" || Number.isNaN(Number(expenseC)) || cost.trim() === ""){
+    let expenseC = arr.join("");
+    if (expenseName.value.trim() === "" || Number.isNaN(Number(expenseC)) || cost.trim() === "") {
         alert("Please input all the fields, or input a correct number");
     } else {
         saveLocalHistory([expenseName.value, expenseC]);
