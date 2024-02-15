@@ -13,8 +13,22 @@ const saveBudget = (budget) => {
     localStorage.setItem("budget", JSON.stringify(arr));
 }
 
+const getLocalHistory = () => {
+    if(localStorage.getItem("history") !== null){
+        return JSON.parse(localStorage.getItem("history"));
+    } else {
+        return [];
+    }
+}
+
+const saveLocalHistory = (array) => {
+    let arr = getLocalHistory();
+    arr.push(array);
+
+    localStorage.setItem("history", JSON.stringify(arr));
+}
 
 
 
 
-export {getBudget, saveBudget}
+export {getBudget, saveBudget, getLocalHistory, saveLocalHistory}

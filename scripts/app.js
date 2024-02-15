@@ -1,5 +1,5 @@
 import { addHistory } from "./addingToHistory.js";
-import { saveBudget, getBudget } from "./localStorage.js";
+import { saveBudget, getBudget, saveLocalHistory, getLocalHistory } from "./localStorage.js";
 
 let budgetInput = document.getElementById("budgetInput");
 let budgetUpdate = document.getElementById("budgetUpdate");
