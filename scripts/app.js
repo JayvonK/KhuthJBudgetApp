@@ -51,7 +51,22 @@ budgetCancel.addEventListener('click', () => {
 })
 
 addExpense.addEventListener('click', () => {
-    
+    let arr = [];
+    let cost = expenseCost.value;
+    for(let i = 0; cost.length; i++){
+        if(cost[i] !== "$"){
+            arr.push(cost[i]);
+        }
+    }
+    let expenseC = arr.join("")
+    if(expenseName.value.trim() === "" || Number.isNaN(Number(expenseC)) || cost.trim() === ""){
+        alert("Please input all the fields, or input a correct number");
+    } else {
+        saveLocalHistory([expenseName.value, expenseC]);
+        update();
+        expenseName.value = "";
+        expenseCost.value = "";
+    }
 })
 
 export { historyDiv }
