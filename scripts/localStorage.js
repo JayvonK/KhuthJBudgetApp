@@ -30,13 +30,18 @@ const saveLocalHistory = (array) => {
 
 const removeLocalHistory = (array) => {
     let arr = getLocalHistory();
+    let count = 0;
     let index = 0;
     arr.map(el => {
-        index++;
+        count++
         if(el[0] === array[0] && el[1] === array[1]){
-            console.log(index);
+            index = count;
         }
     })
+
+    console.log("work");
+    arr.splice(index - 1, 1);
+    localStorage.setItem("history", JSON.stringify(arr));
 }
 
 

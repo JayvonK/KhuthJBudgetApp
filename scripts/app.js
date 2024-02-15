@@ -1,4 +1,4 @@
-import { addHistory } from "./addingToHistory.js";
+import { addHistory, addManageExpense } from "./addingToHistory.js";
 import { saveBudget, getBudget, saveLocalHistory, getLocalHistory } from "./localStorage.js";
 
 let budgetInput = document.getElementById("budgetInput");
@@ -14,6 +14,7 @@ let historyDiv = document.getElementById("historyDiv");
 
 const update = () => {
     historyDiv.innerHTML = "";
+    expenseDiv.innerHTML = "";
     let arr = getBudget();
     arr.length === 0 ? budget.textContent = "$" + "0.00" : budget.textContent = "$" + arr[0];
 
@@ -25,6 +26,21 @@ const update = () => {
             addHistory(histArr[i][0], histArr[i][1]);
         }
     }
+
+    let expArr = [];
+    for(let i = 0; i < histArr.length; i++){
+        if(histArr[i][0] !== "Update Budget:"){
+            expArr.push(histArr[i]);
+        }
+    }
+
+    if(expArr.length === 0){
+        expenseDiv.textContent = "No Expenses";
+    } else {
+        expArr.map(exp => addManageExpense(exp[0], exp[1]));
+    }
+
+
 }
 
 update();
@@ -73,4 +89,9 @@ addExpense.addEventListener('click', () => {
     }
 })
 
-export { historyDiv, expenseDiv }
+expenseCancel.addEventListener('click', () => {
+    expenseName.value = "";
+    expenseCost.value = "";
+})
+
+export { historyDiv, expenseDiv, update }
