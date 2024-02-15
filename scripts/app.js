@@ -1,6 +1,6 @@
-import { addHistory, addManageExpense } from "./addingToHistory.js";
+import { addHistory, addManageExpense, addHistoryE } from "./addingToHistory.js";
 import { saveBudget, getBudget, saveLocalHistory, getLocalHistory } from "./localStorage.js";
-import { subtractFromBudget } from "./changeBudget.js";
+import { addToBudget, subtractFromBudget } from "./changeBudget.js";
 
 let budgetInput = document.getElementById("budgetInput");
 let budgetUpdate = document.getElementById("budgetUpdate");
@@ -17,22 +17,41 @@ const update = () => {
     historyDiv.innerHTML = "";
     expenseDiv.innerHTML = "";
     let arr = getBudget();
-    arr.length === 0 ? budget.textContent = "$" + "0.00" : budget.textContent = "$" + arr[0];
+    if (arr.length === 0) {
+        saveBudget("0.00");
+        budget.textContent = "$0.00";
+    } else {
+        budget.textContent = "$" + arr[0];
+    }
 
     let histArr = getLocalHistory();
     if (histArr.length === 0) {
         historyDiv.textContent = "No History.";
     } else {
         for (let i = histArr.length - 1; i >= 0; i--) {
-            addHistory(histArr[i][0], histArr[i][1]);
+            if (histArr[i][0] === "Update Budget:") {
+                addHistory(histArr[i][0], histArr[i][1]);
+            } else {
+                addHistoryE(histArr[i][0], histArr[i][1]);
+            }
+
         }
     }
 
     let expArr = [];
     for (let i = 0; i < histArr.length; i++) {
-        if (histArr[i][0] !== "Update Budget:") {
-            expArr.push(histArr[i]);
-        }
+        console.log(i)
+            if (histArr[i][0] !== "Update Budget:" && histArr[i][0].split(" ")[0] !== "Removed") {
+                // for (let j = 0; j < histArr.length; j++) {
+                //     if (histArr[j][0].split(" ")[0] === "Removed") {
+                //         if (histArr[j][0].split(" ")[1] === histArr[i][0].split(" ")[1]) {
+                //             expArr.push(histArr[i]);
+                //             histArr.splice(j, 1);
+                //         }
+                //     } 
+                // }
+                expArr.push(histArr[i]);
+            }
     }
 
     if (expArr.length === 0) {
